@@ -50,3 +50,4 @@ Built in one Claude Code session (desktop app). This file carries the context a 
 - `me-cutout.png` fallback is ~1.8 MB (AVIF is served to modern browsers). `src/assets/{hero.png,react.svg,vite.svg}` and `src/components/ui/button.jsx` are unused template leftovers.
 - Remaining lint warnings are only in vendored files (React Bits ClickSpark, GridScan, LogoLoop, Magnet, and the unused shadcn `ui/button.jsx`).
 - An early mistake deleted the original full-res JPG from `public/`; it was restored from `~/Pictures` (2022×2560).
+- Repo is private on GitHub (`PTan2505/porfolio`). It started with only a GitHub-generated `README.md`; the site was committed on top (no force-push). If it is ever made public, the CV PDF with the street address becomes public too.

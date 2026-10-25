@@ -7,7 +7,7 @@ Personal portfolio site. **Read `HANDOFF.md` (history, decisions, open items) an
 - shadcn CLI is set up with the **React Bits registry**: `npx shadcn@latest add @react-bits/<Name>-JS-TW` (files land in `src/components/<Name>.jsx`).
 - `npm run dev` (port 5173 — the owner usually already has it running) · `npm run build` · `npm run lint` (oxlint)
 - Path alias `@/` → `src/`. `cn()` comes from the `cn` package (clsx + tailwind-merge).
-- Not a git repository.
+- Git: `git@github.com:PTan2505/porfolio.git` (private), branch `main`. The repo pins the owner's **personal** SSH key via `core.sshCommand` (`~/.ssh/id_ed25519`, `IdentitiesOnly=yes`) so the FPT key is never used. Don't change it.
 
 ## Layout
 - `src/data/site.js`, `src/data/projects.js` — **all content** (from the owner's CV). Edit copy here, not in components.

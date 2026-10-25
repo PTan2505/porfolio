@@ -1,5 +1,7 @@
+import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import SplitText from '@/components/SplitText'
-import PillButton from '@/components/common/PillButton'
+import SpecularButton from '@/components/SpecularButton'
 import Reveal from '@/components/common/Reveal'
 import SectionHeading from '@/components/common/SectionHeading'
 import { profile, stats } from '@/data/site'
@@ -25,9 +27,10 @@ export default function AboutTeaser() {
             />
             <Reveal delay={0.15}>
               <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-soft">{profile.summary}</p>
-              <PillButton to="/about" variant="light" className="mt-8">
+              <SpecularButton as={Link} to="/about" size="md" className="group/btn mt-8">
                 More about me
-              </PillButton>
+                <ArrowUpRight aria-hidden="true" className="size-4 transition-transform duration-300 group-hover/btn:rotate-45" />
+              </SpecularButton>
             </Reveal>
           </div>
           <dl className="grid grid-cols-2 gap-px self-end overflow-hidden rounded-3xl bg-ink/10 ring-1 ring-ink/10">

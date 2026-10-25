@@ -1,11 +1,13 @@
+import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 import { motion } from 'motion/react'
 import GridScan from '@/components/GridScan'
-import Magnet from '@/components/Magnet'
 import TechText from '@/components/TechText'
-import PillButton from '@/components/common/PillButton'
+import SpecularButton from '@/components/SpecularButton'
 import { SocialPill } from '@/components/common/SocialPills'
 import { profile, socials } from '@/data/site'
+import { isFigmaCapture } from '@/lib/figmaCapture'
 
 const ease = [0.22, 1, 0.36, 1]
 
@@ -50,10 +52,10 @@ export default function Hero() {
         <TechText
           layoutRef={nameBandRef}
           text={name}
-          fontFamily="'Manrope Variable', sans-serif"
-          fontWeight={800}
+          fontFamily="'Apexor', 'Manrope Variable', sans-serif"
+          fontWeight={400}
           fontSize={420}
-          letterSpacing={0.04}
+          letterSpacing={0.02}
           color="currentColor"
           accentColor="currentColor"
           reveal="letter"
@@ -61,6 +63,7 @@ export default function Hero() {
           introDuration={2.4}
           labels
           specks={12}
+          sweep={!isFigmaCapture}
         />
       </motion.div>
 
@@ -94,14 +97,17 @@ export default function Hero() {
         transition={{ duration: 0.9, delay: 0.9, ease }}
         className="absolute inset-x-4 bottom-4 z-30 rounded-3xl bg-paper/85 p-5 shadow-[0_20px_50px_-25px_rgb(0_0_0/0.4)] ring-1 ring-ink/10 backdrop-blur-md sm:inset-x-6 md:inset-x-auto md:bottom-[12svh] md:left-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] md:max-w-sm md:bg-transparent md:p-0 md:shadow-none md:ring-0 md:backdrop-blur-none"
       >
-        <h1 id="hero-title" className="text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight tracking-tight text-ink">
+        <h1 id="hero-title" className="font-title text-subheading font-normal leading-[1.05] text-ink">
           <span className="sr-only">{profile.fullName} — </span>
           {profile.role}
         </h1>
         <p className="mt-3 max-w-xs text-[17px] leading-relaxed text-ink-soft">{profile.tagline}</p>
-        <Magnet padding={50} magnetStrength={4} wrapperClassName="mt-6">
-          <PillButton to="/#contact">Let’s collaborate</PillButton>
-        </Magnet>
+        <div className="mt-6">
+          <SpecularButton as={Link} to="/#contact" size="md" className="group/btn">
+            Let’s collaborate
+            <ArrowUpRight aria-hidden="true" className="size-4 transition-transform duration-300 group-hover/btn:rotate-45" />
+          </SpecularButton>
+        </div>
       </motion.div>
 
       {/* Right: socials */}

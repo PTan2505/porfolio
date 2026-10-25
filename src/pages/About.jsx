@@ -1,7 +1,7 @@
 import { ArrowUpRight, Download } from 'lucide-react'
 import { SiGithub } from 'react-icons/si'
 import SplitText from '@/components/SplitText'
-import PillButton from '@/components/common/PillButton'
+import SpecularButton from '@/components/SpecularButton'
 import Reveal from '@/components/common/Reveal'
 import SectionHeading from '@/components/common/SectionHeading'
 import Contact from '@/components/sections/Contact'
@@ -41,12 +41,14 @@ export default function About() {
             <Reveal delay={0.2}>
               <p className="mt-8 max-w-2xl text-xl leading-relaxed text-ink">{profile.summary}</p>
               <div className="mt-10 flex flex-wrap gap-3">
-                <PillButton href={profile.cv} download icon={<Download aria-hidden="true" className="size-4" />}>
+                <SpecularButton as="a" href={profile.cv} download size="md">
+                  <Download aria-hidden="true" className="size-4" />
                   Download CV
-                </PillButton>
-                <PillButton href={profile.github} target="_blank" rel="noreferrer" variant="light">
+                </SpecularButton>
+                <SpecularButton as="a" href={profile.github} target="_blank" rel="noreferrer" size="md" className="group/btn">
                   GitHub
-                </PillButton>
+                  <ArrowUpRight aria-hidden="true" className="size-4 transition-transform duration-300 group-hover/btn:rotate-45" />
+                </SpecularButton>
               </div>
             </Reveal>
           </div>

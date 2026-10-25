@@ -32,8 +32,8 @@ function useFitWidth(boxRef, textRef) {
   }, [boxRef, textRef])
 }
 
-// "/SELECTED WORK" style heading with an optional giant ghost word behind it.
-export default function SectionHeading({ title, ghost, dark = false, align = 'left', aside, className, as = 'h2' }) {
+// Centred "SELECTED WORK" style heading (Astravolt) with an optional giant ghost word (Apexor) behind it.
+export default function SectionHeading({ title, ghost, dark = false, align = 'center', aside, className, as = 'h2' }) {
   const ghostBoxRef = useRef(null)
   const ghostRef = useRef(null)
   useFitWidth(ghostBoxRef, ghostRef)
@@ -49,7 +49,7 @@ export default function SectionHeading({ title, ghost, dark = false, align = 'le
           <span
             ref={ghostRef}
             className={cn(
-              '-mt-[0.35em] block whitespace-nowrap text-[clamp(4.5rem,15vw,13rem)] font-extrabold uppercase leading-none tracking-[0.08em]',
+              'font-hero -mt-[0.35em] block whitespace-nowrap text-[clamp(4.5rem,15vw,13rem)] font-normal uppercase leading-none tracking-[0.04em]',
               dark ? 'ghost-title-dark' : 'ghost-title'
             )}
           >
@@ -59,24 +59,26 @@ export default function SectionHeading({ title, ghost, dark = false, align = 'le
       )}
       <div
         className={cn(
-          'relative flex flex-wrap items-end gap-4',
-          align === 'center' ? 'justify-center text-center' : 'justify-between'
+          'relative flex',
+          align === 'center' ? 'flex-col items-center gap-3 text-center' : 'flex-wrap items-end justify-between gap-4'
         )}
       >
         <SplitText
           tag={as}
-          text={`/${title}`}
+          text={title}
           textAlign={align}
           splitType="chars"
           delay={25}
           duration={0.9}
           mask
           className={cn(
-            'text-[clamp(2.25rem,6vw,4.5rem)] font-semibold uppercase leading-[0.95] tracking-[-0.03em]',
+            'font-title text-[clamp(2.875rem,calc(6vw+10px),5.125rem)] font-bold uppercase leading-[0.95] tracking-normal',
             dark ? 'text-paper' : 'text-ink'
           )}
         />
-        {aside && <div className={cn('pb-2 text-lg', dark ? 'text-paper/80' : 'text-ink-soft')}>{aside}</div>}
+        {aside && (
+          <div className={cn('text-lg', align !== 'center' && 'pb-2', dark ? 'text-paper/80' : 'text-ink-soft')}>{aside}</div>
+        )}
       </div>
     </div>
   )

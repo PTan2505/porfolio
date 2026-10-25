@@ -1,3 +1,5 @@
+import { asset } from '@/lib/asset'
+
 // Project content from the CV. `cover` drives the generated monochrome cover art
 // (see components/common/ProjectCover.jsx) — swap in `image` once you have real screenshots.
 
@@ -27,7 +29,7 @@ export const projects = [
       { label: 'GitHub — Web', href: 'https://github.com/PTan2505/HCM-Digitalized-Street-Food-FE-Web' },
       { label: 'GitHub — Mobile', href: 'https://github.com/PTan2505/HCM-Digitalized-Street-Food-FE-Mobile' },
     ],
-    cover: { tone: 'light', motif: 'devices', logo: '/images/lowca-logo.svg', label: 'Lowca' },
+    cover: { tone: 'light', motif: 'devices', logo: asset('/images/lowca-logo.svg'), label: 'Lowca' },
   },
   {
     slug: 'pulse-api',

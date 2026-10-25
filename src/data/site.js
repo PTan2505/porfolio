@@ -1,3 +1,5 @@
+import { asset } from '@/lib/asset'
+
 // Single source of truth for portfolio content.
 // Items marked `placeholder: true` are not in the CV yet — fill them in later.
 
@@ -14,10 +16,10 @@ export const profile = {
   phone: '+84 334 974 582',
   github: 'https://github.com/PTan2505',
   githubUser: 'PTan2505',
-  cv: '/cv/Nguyen-Phuc-Tan-CV.pdf',
-  photo: '/images/me-cutout.png',
-  photoAvif: '/images/me-cutout.avif',
-  avatar: '/images/me.jpg',
+  cv: asset('/cv/Nguyen-Phuc-Tan-CV.pdf'),
+  photo: asset('/images/me-cutout.png'),
+  photoAvif: asset('/images/me-cutout.avif'),
+  avatar: asset('/images/me.jpg'),
   yearsOfExperience: '2+',
 }
 

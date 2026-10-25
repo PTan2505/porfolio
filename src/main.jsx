@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       { path: '*', lazy: page(() => import('@/pages/NotFound')) },
     ],
   },
-])
+], { basename: import.meta.env.BASE_URL.replace(/\/$/, '') || '/' })
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

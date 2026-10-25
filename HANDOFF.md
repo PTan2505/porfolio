@@ -40,7 +40,7 @@ Built in one Claude Code session (desktop app). This file carries the context a 
 - **The Pulse API** (`src/data/projects.js` slug `pulse-api`, `src/data/site.js` experience[0]): role, dates, stack, description, responsibilities. Owner works there (thepulseapi.com); details unknown.
 - **Testimonials**, **Certifications & awards**, **Writing** (`src/data/site.js`).
 - **Contact form transport**: `src/lib/contact.js` is a stub that resolves after 900 ms. Wire EmailJS / Web3Forms / Formspree / own API (owner said "later"); keep the resolve/throw contract.
-- **Deployment**: not decided.
+- **Deployment**: GitHub Pages (repo made public for it; owner chose to publish the CV as is). Workflow `.github/workflows/deploy.yml`.
 - **Real project screenshots**: none in the repos; covers are generated (`ProjectCover`). Add `image` per project when available.
 
 ## Pending questions (asked, not answered)

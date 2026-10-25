@@ -13,13 +13,13 @@ Personal portfolio site. **Read `HANDOFF.md` (history, decisions, open items) an
 - `src/data/site.js`, `src/data/projects.js` — **all content** (from the owner's CV). Edit copy here, not in components.
 - `src/components/sections/*` — home sections; `src/pages/*` — routes (`/`, `/work`, `/work/:slug`, `/about`, 404).
 - `src/components/common/*` — shared UI (PillButton, SectionHeading, ProjectCard, ProjectCover, ContactForm…).
-- `src/components/{TechText,GridScan,SplitText,LogoLoop,Magnet,ClickSpark,ScrollVelocity}.jsx` — React Bits components. **TechText and GridScan are locally modified** (see HANDOFF.md) — don't blindly re-add them from the registry.
+- `src/components/{TechText,GridScan,SpecularButton,SplitText,LogoLoop,ClickSpark,ScrollVelocity}.jsx` — React Bits components. **TechText, GridScan and SpecularButton are locally modified** (see HANDOFF.md) — don't blindly re-add them from the registry.
 - `scripts/photo/build-hero-cutout.swift` — rebuilds the hero photo.
 
 ## Owner preferences (hard rules)
 - **Monochrome only** — black & white, no accent colours. Theme is **inverted**: black canvas, white ink. No dark/light toggle.
 - Use **semantic tokens** (`ink`, `paper`, `night`, …) — never raw `black/…`/`white/…` utilities in components.
-- Follow the reference layout (owner-supplied screenshots: hero with giant name + cut-out portrait, `/SECTION` headings with giant ghost words, Service accordion, dark Experience list, "Have a project in mind?" CTA).
+- Follow the reference layout (owner-supplied screenshots: hero with giant name + cut-out portrait, section headings (no slash prefix) with giant ghost words, Service accordion, dark Experience list, "Have a project in mind?" CTA).
 - Motion level: **expressive**, but **scrolling must stay native** (Lenis was removed because it felt delayed — don't add smooth-scroll libraries).
 - Hero photo: **keep the owner's own background removal** (`public/no_background.png`). Do not re-segment it with Vision/rembg/AI — a previous attempt was rejected. Only upgrade quality.
 - Don't invent CV facts. Missing info stays as visible `TODO` placeholders.

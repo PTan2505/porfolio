@@ -1,4 +1,6 @@
-import PillButton from '@/components/common/PillButton'
+import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import SpecularButton from '@/components/SpecularButton'
 import usePageTitle from '@/lib/usePageTitle'
 
 export default function NotFound() {
@@ -11,9 +13,10 @@ export default function NotFound() {
         </p>
         <h1 className="mt-4 text-2xl font-semibold text-ink">This page doesn’t exist.</h1>
         <p className="mt-2 text-ink-soft">The link may be broken, or the page has moved.</p>
-        <PillButton to="/" className="mt-8">
+        <SpecularButton as={Link} to="/" size="md" className="group/btn mt-8">
           Back home
-        </PillButton>
+          <ArrowUpRight aria-hidden="true" className="size-4 transition-transform duration-300 group-hover/btn:rotate-45" />
+        </SpecularButton>
       </div>
     </section>
   )

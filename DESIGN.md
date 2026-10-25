@@ -18,18 +18,20 @@ To re-theme, change only these variables (the swap from light→dark was done th
 
 ## Typography
 - **Manrope Variable** for everything (`--font-sans`, `--font-heading`); Geist Variable as `--font-mono` (counts like `[05]`, list numbers).
-- Hero name: Manrope 800, uppercase, `letterSpacing 0.04`, rendered by TechText canvas.
-- Section headings: `/TITLE`, `clamp(2.25rem,6vw,4.5rem)`, semibold, uppercase, tracking −0.03em, animated by SplitText (chars, mask).
-- Ghost words behind headings: extrabold uppercase, tracking 0.08em, gradient-filled (`ghost-title` on paper, `ghost-title-dark` on night). Auto-fit to the heading width via `useFitWidth` in `SectionHeading.jsx`: never larger than the original `clamp(4.5rem,15vw,13rem)`, and shrinks below it when the word would overflow (e.g. "TESTIMONIALS" ≈ 41px at 375px wide).
+- Hero name: **Apexor** (Igor Ovsyannykov, single weight 400, very wide geometric display), uppercase, `letterSpacing 0.02`, rendered by TechText canvas; falls back to Manrope. Loaded via `@font-face` in index.css from `src/assets/fonts/apexor.otf` (25 KB). Because it is so wide, the width-fit makes the name ~105 px tall at 1440 px (Manrope was ~187 px). Only the hero name uses it.
+- Section headings: `TITLE` (no slash prefix) in **Astravolt** (Stylin Studio, single weight 400, rounded techno display with real lowercase; `font-title` token, falls back to Manrope), `clamp(2.875rem,calc(6vw+10px),5.125rem)` (46–82 px), **bold** (browser-synthesised — Astravolt ships Regular only), uppercase, normal tracking, animated by SplitText (chars, mask). "SELECTED WORK" may wrap at 375 px.
+- Ghost words behind headings: **Apexor** (`font-hero` token), uppercase, tracking 0.04em, gradient-filled (`ghost-title` on paper, `ghost-title-dark` on night). Auto-fit to the heading width via `useFitWidth` in `SectionHeading.jsx`: never larger than the original `clamp(4.5rem,15vw,13rem)`, and shrinks below it when the word would overflow (e.g. "TESTIMONIALS" ≈ 41px at 375px wide).
 - Body 15–18px, `leading-relaxed`.
+
+- **Sub-heading size** — token `--text-subheading` (`2rem` = 32 px on all screens) in index.css, used as the `text-subheading` class by the hero role and the Service item titles. Change the size there, not inline.
 
 ## Utilities (`@utility` in index.css)
 `text-outline` (stroke-only text, uses `-webkit-text-fill-color: transparent`), `ghost-title`, `ghost-title-dark`, `grain` (SVG noise overlay).
 
 ## Components & patterns
-- **PillButton** — rounded-full pill with ↗ arrow that rotates on hover. Variants: `dark` (solid ink), `light` (outline), `invert`, `ghost`.
+- **Buttons** — React Bits **SpecularButton** used directly (no wrapper). Its defaults *are* the **Glass** preset (radius 18, white tint 0.04, text #f5f5f5, line #fff, base #525252, idle 0.35, shine 10°/34°, thickness 1.2, glow 1, follows the cursor within 250px), so call sites pass only `as` (`Link` / `"a"` / default button), `to`/`href`, and `size="md"`. Each CTA ends with a ↗ `ArrowUpRight` (rotates 45° on hover via `group/btn`); Download CV uses a download icon; Send message swaps the arrow for a spinner while sending. Buttons do not move with the cursor (Magnet removed).
 - **SocialPill(s)** — outline pills with icons (GitHub, Email, Download CV, phone).
-- **SectionHeading** — `/TITLE` + ghost word + optional `aside` (e.g. "2+ years of experience").
+- **SectionHeading** — **centred** `TITLE` (default `align="center"`) + centred ghost word + optional `aside` stacked below (e.g. "2+ years of experience"). `align="left"` still supported.
 - **ProjectCard** — rounded card, cover (16:11), category chip, hover ↗ circle, title, 2-line summary, tag chips.
 - **ProjectCover** — generated monochrome cover art per project (`cover: { tone, motif, logo?, label }` in projects.js; motifs `devices | pulse | editor | cards | dashboard`). Tones were flipped for the dark theme so covers contrast with black cards. Add `image` to a project to use a real screenshot instead.
 - **Service accordion** — big uppercase rows; open row becomes a `night` card with description, tags and a tilted project-cover preview (≥lg).
@@ -41,11 +43,11 @@ To re-theme, change only these variables (the swap from light→dark was done th
 - Name: React Bits **TechText**, solid "PHUC TAN", `intro="metrics"` (2.4 s: type guides draw, then letters trace in), `reveal="letter"` (hover outlines one letter with a measurement frame), letters draggable anywhere in the section (canvas covers the section; word laid out inside an invisible band via `layoutRef`).
 - Portrait: `public/images/me-cutout.avif` (PNG fallback) 1638×1618, CSS `grayscale contrast-[1.05]`, soft white radial halo behind it. Oversized and pushed below the fold so it reads large while the head stays below most of the name:
   - mobile `h-[68svh] -bottom-[8svh]`, sm `h-[80svh] -bottom-[14svh]`, lg `h-[90svh] -bottom-[22svh]` (≈ head top at y≈306 on 1440×900).
-- Left: role (h1, with sr-only full name), tagline, "Let's collaborate" (Magnet). Right: social pills (md+). On mobile the left block becomes a blurred card at the bottom.
+- Left: role (h1 in **Astravolt**, normal case "Frontend Developer"; sr-only full name), tagline, "Let's collaborate". Right: social pills (md+). On mobile the left block becomes a blurred card at the bottom.
 
 ## Motion
 - Easing `[0.22, 1, 0.36, 1]` for reveals; `Reveal` = fade + rise 32px, once, on view.
-- Expressive extras: Magnet buttons, ClickSpark (white sparks) on every click, ScrollVelocity marquee, LogoLoop tech logos, filter pill `layoutId` slide.
+- Expressive extras: ClickSpark (white sparks) on every click, ScrollVelocity marquee, LogoLoop tech logos, filter pill `layoutId` slide.
 - `MotionConfig reducedMotion="user"`; CSS kills animations under `prefers-reduced-motion`; anchor scrolling becomes instant.
 - Scrolling is **native**. Anchor links use `scrollToTarget()` (`src/lib/scroll.js`) with an 80 px offset for the fixed navbar.
 

@@ -1,9 +1,9 @@
 import { useId, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { Check, Loader2 } from 'lucide-react'
+import { Check, Loader2, ArrowUpRight } from 'lucide-react'
 import { sendContactMessage } from '@/lib/contact'
 import { cn } from '@/lib/utils'
-import PillButton from './PillButton'
+import SpecularButton from '@/components/SpecularButton'
 
 const EMPTY = { name: '', email: '', subject: '', message: '' }
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -147,13 +147,14 @@ export default function ContactForm({ className }) {
         error={shown('message')}
       />
       <div className="flex flex-col items-center gap-4 sm:col-span-2" aria-live="polite">
-        <PillButton
-          type="submit"
-          disabled={status === 'sending'}
-          icon={status === 'sending' ? <Loader2 aria-hidden="true" className="size-4 animate-spin" /> : true}
-        >
+        <SpecularButton type="submit" size="md" disabled={status === 'sending'} className="group/btn">
           {status === 'sending' ? 'Sending…' : 'Send message'}
-        </PillButton>
+          {status === 'sending' ? (
+            <Loader2 aria-hidden="true" className="size-4 animate-spin" />
+          ) : (
+            <ArrowUpRight aria-hidden="true" className="size-4 transition-transform duration-300 group-hover/btn:rotate-45" />
+          )}
+        </SpecularButton>
         <AnimatePresence mode="wait">
           {status === 'sent' && (
             <motion.p

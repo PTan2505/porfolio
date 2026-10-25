@@ -10,6 +10,8 @@ Built in one Claude Code session (desktop app). This file carries the context a 
 - Black & white only, no colourful accents; no dark-mode toggle. Later: **invert** (black background, white text) — done.
 - "Available for new project" badge: removed.
 - Show: all CV projects (+ The Pulse API, not in CV), About/summary, tech stack, education, English level. Contact details public: **email, GitHub, phone, city only** (no street address). Socials: GitHub + Email + Download CV only.
+- Hero name font changed to **Apexor** (owner-supplied zip from ifonts.xyz; licence file says "Demo for Personal Use", commercial licence via Envato Elements). Font + licence note in `src/assets/fonts/`.
+- Section titles + hero role use **Astravolt** (owner-supplied `src/assets/fonts/astravolt.otf`; `iFonts-License.txt` is its licence: "Demo for Personal Use"). Replaced Brace (`brace.otf`, now unused).
 - Contact: a form, API wired later. Multi-page. Deployment: later. Fonts: match reference (Manrope).
 - Motion: expressive. Scroll: native (Lenis removed — "seems delayed").
 - Hero name intro: chose **metrics** out of 5 previewed (assemble, typewriter, metrics, curtain rise, focus pull). Reveal: **letter** (not area). "PHUC" made **solid** (was outlined).
@@ -20,7 +22,8 @@ Built in one Claude Code session (desktop app). This file carries the context a 
   - `outlineChars` / `outlineWidth` props: first N chars drawn as outlines (no longer used in the hero, kept for the option).
   - `layoutRef` prop: canvas covers its container, but the word is laid out inside the referenced element's rect → letters can be dragged anywhere in the hero without clipping. Band rect is part of the layout key and observed by ResizeObserver.
 - `GridScan.jsx`: creates a **fresh canvas per mount**. Its cleanup calls `loseContext()`, and React StrictMode re-runs effects on the same DOM node, which previously handed back a dead WebGL context (blank background in dev).
-- Others (SplitText, LogoLoop, Magnet, ClickSpark, ScrollVelocity) are unmodified registry copies.
+- `SpecularButton.jsx`: added an `as` prop (render as `Link`/`a`; `type`/`disabled` only on real buttons) and the same fresh-canvas-per-mount fix as GridScan.
+- Others (SplitText, LogoLoop, ClickSpark, ScrollVelocity) are unmodified registry copies. Magnet was removed (owner didn't want buttons following the cursor).
 
 ## Hero photo pipeline
 - Owner's cut-out: `public/no_background.png` (1896×2400) — verified to be an exact scale of the original photo (0 px offset, 0.56/255 mean RGB error).
@@ -46,6 +49,7 @@ Built in one Claude Code session (desktop app). This file carries the context a 
 - Dragged hero letters pass **behind** the portrait (same depth as the name) — offered to raise them above while dragging.
 
 ## Known caveats
+- **Apexor licence is a personal-use demo.** Fine for a personal portfolio; buy the commercial licence if the site is used commercially. The original zip is still at `public/apexor-futuristic-geometric-display.zip`, which Vite would publish — move it out of `public/` before deploying.
 - `public/cv/Nguyen-Phuc-Tan-CV.pdf` contains the owner's **street address**, while the site intentionally shows city only. Flagged; owner may want a redacted CV.
 - `me-cutout.png` fallback is ~1.8 MB (AVIF is served to modern browsers). `src/assets/{hero.png,react.svg,vite.svg}` and `src/components/ui/button.jsx` are unused template leftovers.
 - Remaining lint warnings are only in vendored files (React Bits ClickSpark, GridScan, LogoLoop, Magnet, and the unused shadcn `ui/button.jsx`).

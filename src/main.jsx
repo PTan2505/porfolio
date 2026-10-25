@@ -4,6 +4,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import Layout from '@/components/layout/Layout'
 import Home from '@/pages/Home'
+import { isFigmaCapture } from '@/lib/figmaCapture'
+
+// Dev-only Figma capture mode (`#figmacapture=…` URLs from the Figma MCP): load Figma's capture
+// script and freeze scroll-reveal animations in their final state so off-screen sections are visible.
+if (isFigmaCapture) {
+  document.documentElement.classList.add('figma-capture')
+  const script = document.createElement('script')
+  script.src = 'https://mcp.figma.com/mcp/html-to-design/capture.js'
+  script.async = true
+  document.head.appendChild(script)
+}
 
 const page = load => () => load().then(m => ({ Component: m.default }))
 

@@ -48,7 +48,7 @@ export default function Services() {
                     >
                       <motion.span
                         layout="position"
-                        className="text-[clamp(1.75rem,5.5vw,4rem)] font-medium uppercase leading-none tracking-[-0.03em] transition-transform duration-500 group-hover:translate-x-2"
+                        className="text-subheading font-medium uppercase leading-none tracking-[-0.03em] transition-transform duration-500 group-hover:translate-x-2"
                       >
                         {s.title}
                       </motion.span>

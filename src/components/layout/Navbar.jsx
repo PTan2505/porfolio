@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
-import { Menu, X } from 'lucide-react'
-import Magnet from '@/components/Magnet'
-import PillButton from '@/components/common/PillButton'
+import { Menu, X, ArrowUpRight } from 'lucide-react'
+import SpecularButton from '@/components/SpecularButton'
 import SocialPills from '@/components/common/SocialPills'
 import { navLinks, profile } from '@/data/site'
 import { cn } from '@/lib/utils'
@@ -90,11 +89,10 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
           <div className="hidden sm:block">
-            <Magnet padding={40} magnetStrength={4}>
-              <PillButton to="/#contact" size="md">
-                Let’s Talk
-              </PillButton>
-            </Magnet>
+            <SpecularButton as={Link} to="/#contact" size="md" className="group/btn">
+              Let’s Talk
+              <ArrowUpRight aria-hidden="true" className="size-4 transition-transform duration-300 group-hover/btn:rotate-45" />
+            </SpecularButton>
           </div>
           <button
             type="button"
@@ -134,9 +132,10 @@ export default function Navbar() {
               </ul>
             </nav>
             <SocialPills className="mt-8 flex flex-wrap gap-3" />
-            <PillButton to="/#contact" className="mt-6 w-full" onClick={() => setOpen(false)}>
+            <SpecularButton as={Link} to="/#contact" size="md" className="group/btn mt-6 w-full" onClick={() => setOpen(false)}>
               Let’s Talk
-            </PillButton>
+              <ArrowUpRight aria-hidden="true" className="size-4 transition-transform duration-300 group-hover/btn:rotate-45" />
+            </SpecularButton>
           </motion.div>
         )}
       </AnimatePresence>

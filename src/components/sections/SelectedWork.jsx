@@ -1,6 +1,8 @@
+import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import PillButton from '@/components/common/PillButton'
+import SpecularButton from '@/components/SpecularButton'
 import ProjectCard from '@/components/common/ProjectCard'
 import SectionHeading from '@/components/common/SectionHeading'
 import { categories, projects } from '@/data/projects'
@@ -42,9 +44,10 @@ export default function SelectedWork({ limit, showViewAll = true, headingAs = 'h
             ))}
           </div>
           {showViewAll && (
-            <PillButton to="/work" variant="light">
+            <SpecularButton as={Link} to="/work" size="md" className="group/btn">
               View All Work
-            </PillButton>
+              <ArrowUpRight aria-hidden="true" className="size-4 transition-transform duration-300 group-hover/btn:rotate-45" />
+            </SpecularButton>
           )}
         </div>
 

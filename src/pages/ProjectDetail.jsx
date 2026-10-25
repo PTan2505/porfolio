@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 import SplitText from '@/components/SplitText'
-import PillButton from '@/components/common/PillButton'
+import SpecularButton from '@/components/SpecularButton'
 import ProjectCover from '@/components/common/ProjectCover'
 import Reveal from '@/components/common/Reveal'
 import { getProject, projects } from '@/data/projects'
@@ -140,7 +140,10 @@ export default function ProjectDetail() {
         </div>
       </Link>
       <div className="flex justify-center bg-paper py-16">
-        <PillButton to="/#contact">Start a project</PillButton>
+        <SpecularButton as={Link} to="/#contact" size="md" className="group/btn">
+          Start a project
+          <ArrowUpRight aria-hidden="true" className="size-4 transition-transform duration-300 group-hover/btn:rotate-45" />
+        </SpecularButton>
       </div>
     </article>
   )

@@ -6,6 +6,7 @@ Personal portfolio site. **Read `HANDOFF.md` (history, decisions, open items) an
 - Vite 8 + React 19 (JavaScript, no TypeScript), Tailwind CSS v4 (CSS-first config in `src/index.css`), React Router 7 (data router, lazy routes), Motion (`motion/react`), GSAP (via React Bits `SplitText`).
 - shadcn CLI is set up with the **React Bits registry**: `npx shadcn@latest add @react-bits/<Name>-JS-TW` (files land in `src/components/<Name>.jsx`).
 - `npm run dev` (port 5173 — the owner usually already has it running) · `npm run build` · `npm run lint` (oxlint)
+- **Deployed to GitHub Pages** at https://ptan2505.github.io/porfolio/ by `.github/workflows/deploy.yml` on every push to `main`. Production base path is `/porfolio/` (`vite.config.js`); dev stays at `/`. Reference files in `public/` through `asset()` from `src/lib/asset.js`, never as hard-coded `/…` strings. `404.html` is a copy of `index.html` so deep links work.
 - Path alias `@/` → `src/`. `cn()` comes from the `cn` package (clsx + tailwind-merge).
 - Git: `git@github.com:PTan2505/porfolio.git` (private), branch `main`. The repo pins the owner's **personal** SSH key via `core.sshCommand` (`~/.ssh/id_ed25519`, `IdentitiesOnly=yes`) so the FPT key is never used. Don't change it.
 
